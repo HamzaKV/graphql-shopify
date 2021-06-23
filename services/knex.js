@@ -1,12 +1,12 @@
 const Knex = require('knex');
-
 const { Model } = require('objection');
-
-const DATABASE_HOST = 'localhost';
-const DATABASE_PORT = '5432';
-const DATABASE_USER = 'postgres';
-const DATABASE_PASSWORD = 'root';
-const DATABASE = 'shopifygraphql';
+const {
+    DATABASE_HOST,
+    DATABASE_PORT,
+    DATABASE_USER,
+    DATABASE_PASSWORD,
+    DATABASE
+} = require('../constants/config');
 
 const knex = Knex({
     client: 'pg',
@@ -20,5 +20,10 @@ const knex = Knex({
 });
 
 Model.knex(knex);
+
+(async () => {
+    const version = await knex.raw('SELECT VERSION()');
+    console.log('DB Config', `PSQL: ${version.rows[0].version}`);
+})();
 
 module.exports = knex;

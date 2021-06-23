@@ -9,6 +9,7 @@ class Variants extends Model {
             properties: {
                 id: { type: 'integer' },
                 barcode: { type: 'string' },
+                product_id: { type: 'integer' }
             }
         };
     }
@@ -18,7 +19,7 @@ class Variants extends Model {
 
         return {
             product: {
-                relation: Model.HasManyRelation,
+                relation: Model.BelongsToOneRelation,
                 modelClass: Products,
                 join: {
                     from: 'products.id',

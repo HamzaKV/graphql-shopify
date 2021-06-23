@@ -13,6 +13,21 @@ class ProductsModel extends Model {
             }
         };
     }
+
+    static get relationMappings() {
+        const ProductVariants = require('./product-variants');
+
+        return {
+            variants: {
+                relation: Model.HasManyRelation,
+                modelClass: ProductVariants,
+                join: {
+                    from: 'products.id',
+                    to: 'variants.product_id'
+                }
+            }
+        };
+    }
 }
 
 module.exports = ProductsModel;

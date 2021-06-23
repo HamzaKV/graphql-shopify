@@ -1,10 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const { graphqlHTTP } = require('express-graphql');
-const { buildSchema, graphql } = require('graphql');
 const graphQlBuilder = require('objection-graphql').builder;
-const knex = require('./services/knex');
+const execShopifySeed = require('./services/shopify');
 
+execShopifySeed();
 
 const Products = require('./models/products');
 const ProductVariants = require('./models/product-variants');
