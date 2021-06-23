@@ -1,0 +1,29 @@
+{
+  "name": "graphql-shopify",
+  "version": "1.0.0",
+  "description": "A simple application to fetch product data from Shopify account, and expose the data as a GraphQL API",
+  "repository": "https://github.com/HamzaKV/graphql-shopify.git",
+  "author": "HamzaKV <hamzakv333@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix --ext .js,.jsx ."
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.1",
+    "knex": "^0.95.6",
+    "node-fetch": "^2.6.1",
+    "objection": "^2.2.15",
+    "objection-graphql": "^0.4.5",
+    "pg": "^8.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.29.0",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.3.1"
+  }
+}
