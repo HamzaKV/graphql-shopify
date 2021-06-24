@@ -38,20 +38,24 @@ module.exports = async () => {
         products = require('../constants/ShopifyProduct.json').products;
         variants = require('../constants/ShopifyProductVariant.json').variants;
     } finally {
-        for await (const product of products) {
-            await Products.query().insert({
-                id: product.id,
-                title: product.title,
-                status: product.status
-            });
-        }
+        try {
+            for await (const product of products) {
+                await Products.query().insert({
+                    id: product.id,
+                    title: product.title,
+                    status: product.status
+                });
+            }
+    
+            for await (const variant of variants) {
+                await ProductVariants.query().insert({
+                    id: variant.id,
+                    barcode: variant.barcode,
+                    product_id: variant.product_id
+                });
+            }
+        } catch (error) {
 
-        for await (const variant of variants) {
-            await ProductVariants.query().insert({
-                id: variant.id,
-                barcode: variant.barcode,
-                product_id: variant.product_id
-            });
         }
     }
 };
